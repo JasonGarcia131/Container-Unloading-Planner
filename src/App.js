@@ -1,46 +1,20 @@
-import "./App.css"
-import SkuForm from "./components/SkuForm";
-import React, {useState, useEffect} from "react";
+import React from "react";
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Main from "./Main";
+import HomePage from "./pages/HomePage";
 
-function App() {
+function App(){
 
-  useEffect(()=>{},[])
-  const [skuForm, setSkuForm] = useState([]);
-
-  const addInput = (e) => {
-    e.preventDefault()
-    setSkuForm([...skuForm, <SkuForm/>])
-}
-
-const removeInput = (index) => {
-    let data = [...skuForm];
-    data.splice(index,1);
-    setSkuForm(data);
-}
-
-const mappedSkuField = skuForm.map((item, index) => {
-  return  (
-      <div key={index}>
-        <form className="mainFormWrapper" >
-          <fieldset>
-            <legend>Sku {index+1}</legend>
-            {item}
-          </fieldset>
-        </form>
-          <button onClick={()=>removeInput(index)}>Remove</button>
-      </div>
-  )
-})
-
-  return (
-    <div className="App">
-      <h1>Container Unloading Planner</h1>
-      {mappedSkuField}
-      <button onClick={addInput}>Add New Sku</button> 
-      <button>Master Submit</button>
-      
-    </div>
-  );
+    return(
+        <div className="App">
+           <Router>
+            <Routes>
+                <Route exact path="/" element={<HomePage/>}/>
+                <Route path="/Main" element={<Main/>}/>
+            </Routes>
+           </Router>
+        </div>
+    )
 }
 
 export default App;

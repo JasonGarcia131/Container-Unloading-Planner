@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 function Table(props){
 
@@ -14,29 +14,34 @@ function Table(props){
         let column = 0;
         let maxHeight = 0;
         
-        if(height <= 14){
-        maxHeight = 6
+        if(height <= 11){
+            maxHeight = 9
+        }else if(height > 11 && height <= 13){
+            maxHeight = 7
+        }else if(height > 13 && height <= 16){
+            maxHeight = 6
+        }else if(height > 16 && height <= 19){
+            maxHeight = 5
+        }else if(height > 20){
+            maxHeight = 4
         }
-        else if(height > 14 && height < 20){
-        maxHeight = 4
-        }
-        column = item.totalBoxes/maxHeight
+        column = Math.ceil(item.totalBoxes/maxHeight);
 
         return(
                 <tr index={i}>
-                    <td>{sku}</td>
-                    <td>{item.color}</td>
+                    <td>{item.color.toUpperCase()}</td>
                     <td>{maxHeight}</td>
                     <td>{column}</td>
                     <td>{item.totalBoxes}</td>
                 </tr>
         )
     })
+
             return(
                 <div className="tableWrapper">
+                    <h3 className="skuHeader">Style: {sku.toUpperCase()}</h3>
                     <table>
                         <thead>
-                            <th>Style</th>
                             <th>Color</th>
                             <th>Boxes Per Column</th>
                             <th>Number of Columns</th>

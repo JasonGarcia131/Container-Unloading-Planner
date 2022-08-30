@@ -1,5 +1,15 @@
+table > tr, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+table{
+  margin: 0 auto;
+}
+
 .skuWrapper{
-  width: 100%;
+  width: 40%;
+  border: 1px solid black;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -9,8 +19,23 @@
 margin: 5px;
 }
 
+
 .mainFormWrapper{
-  width: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.mainFormFlex{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+
+.mainFormRemoveBtn{
+  width: 5%;
+  height: 5%;
 }
 
 .skuInput {
@@ -28,6 +53,21 @@ margin: 5px;
   width: 10%;
 }
 
+.subFormBtnFlex{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .tableWrapper{
-  width: 50%;
+  width: 40%;
+  text-align: center;
+  border: 1px solid black;
+}
+
+
+.main{
+padding: 5px;
+text-align: center;
 }
