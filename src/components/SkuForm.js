@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from "react";
-import Layout from "./Layout";
+import Table from "./Table";
 
-function Main(){
+function SkuForm(){
 
     //State variables
     const [formData, setFormData] = useState({
@@ -15,11 +15,6 @@ function Main(){
             totalBoxes: 0
         }
     ])
-
-    const [inputArray, setInputArray] = useState([{
-        formData: {},
-        colors: []
-    }])
 
     const [clicked, setClicked] = useState(false);
     
@@ -46,23 +41,6 @@ function Main(){
     const handleSubmit = (e) => {
         e.preventDefault();
         setClicked(!clicked);
-        setInputArray([...inputArray, formData, colors])
-        
-        // const reset = ()=>{
-        //     setFormData({
-        //         sku: "",
-        //         height: 0,
-        //     })
-        //     setColors(
-        //         {
-        //             color: "",
-        //             totalBoxes: 0
-        //         }
-        //     )
-        // }
-        console.log("colors: ", colors)
-        console.log("formData". formData)
-        console.log("input array", inputArray)
     }
 
     const addInput = (e) => {
@@ -83,12 +61,14 @@ function Main(){
     const mappedColorField = colors.map((item, index) => {
         return  (
             <div key={index}>
+                <div className="subFormWrapper">
                 <label htmlFor="colors">Enter color</label>
                 <input
                     type="text"
                     name="color"
                     value={colors.color}
                     onChange={e=>handleChangeColorForm(index,e)}
+                    className="subFormInput"
                 />
                 <label htmlFor="totalBoxes">Total Boxes</label>
                 <input 
@@ -96,23 +76,23 @@ function Main(){
                     name="totalBoxes"
                     value={colors.totalBoxes}
                     onChange={e=>handleChangeColorForm(index,e)}
+                    className="subFormInput"
                 />
+                </div>
                 <button onClick={()=>removeInput(index)}>Remove</button>
             </div>
         )
     })
 
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
-                <fieldset>
-                <legend>Example</legend>
+        <div className="skuWrapper">
                 <label htmlFor="sku">Enter Sku</label>
                 <input 
                     type="text"
                     name="sku"
                     value={formData.sku}
                     onChange={handleChange}
+                    className="skuInput"
                 />
                 <label htmlFor="height">Enter Box height</label>
                 <input  
@@ -120,15 +100,15 @@ function Main(){
                     name="height"
                     value={formData.height}
                     onChange={handleChange}
+                    className="heightInput"
                 />
                   {mappedColorField}  
-                <button onClick={addInput}>Add Color</button> 
-                <button type="submit" onClick={handleSubmit}>Submit</button>
-                </fieldset>
-            </form>
-            {clicked ? <Layout formData={formData} colors={colors}/> : null}
+                <button onClick={addInput} className="skuWrapperBtns">Add Color</button> 
+                <button type="submit" onClick={handleSubmit} className="skuWrapperBtns">Submit</button>
+            
+              {clicked ? <Table formData={formData} colors={colors}/> : null}
         </div>
     )
 }
 
-export default Main
+export default SkuForm
