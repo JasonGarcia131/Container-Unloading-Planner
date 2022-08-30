@@ -16,18 +16,6 @@ function SkuForm(){
         }
     ])
 
-    const [arrayOfSkuForm, setArray] = useState([
-        {
-            formData
-        }
-    ])
-
-    const [tableData, setTableData] = useState([])
-
-
-
-    const [layout, setLayOut] = useState([])
-
     const [clicked, setClicked] = useState(false);
     
     useEffect(()=>{},[])
@@ -70,16 +58,6 @@ function SkuForm(){
         setColors(data);
     }
 
-    const addSkuForm = () => {
-        setArray([...arrayOfSkuForm, formData]);
-    }
-
-    const handleSave = () => {
-        setTableData([...arrayOfSkuForm, formData]);
-    }
-
-    console.log("table data needed", arrayOfSkuForm)
-
     const mappedColorField = colors.map((item, index) => {
         return  (
             <div key={index}>
@@ -106,9 +84,8 @@ function SkuForm(){
         )
     })
 
-    const mappedSkuField = arrayOfSkuForm.map((item, index) => {
-        return(
-            <div className="mainFormWrapper" key={index} >
+    return(
+        <div className="mainFormWrapper" >
             <div className="skuWrapper">
                 <label htmlFor="sku">Enter Sku</label>
                 <input 
@@ -129,49 +106,12 @@ function SkuForm(){
                   {mappedColorField}  
                 <div className="subFormBtnFlex">
                     <button onClick={addInput} className="skuWrapperBtns">Add Color</button> 
+                    <button type="submit" onClick={handleSubmit} className="skuWrapperBtns">Submit</button>
                 </div>
             </div>
-              {/* {clicked ? <Table formData={formData} colors={colors}/> : null} */}
-        </div>
-        )
-    })
-
-    return(
-        <div>
-            {mappedSkuField}
-            <button onClick={addSkuForm}>Add New Sku</button> 
-            <button onClick={handleSave}>Save</button>
+              {clicked ? <Table formData={formData} colors={colors}/> : null}
         </div>
     )
-    // return(
-    //     <div className="mainFormWrapper" >
-    //         <div className="skuWrapper">
-    //             <label htmlFor="sku">Enter Sku</label>
-    //             <input 
-    //                 type="text"
-    //                 name="sku"
-    //                 value={formData.sku}
-    //                 onChange={handleChange}
-    //                 className="skuInput"
-    //             />
-    //             <label htmlFor="height">Enter Box height</label>
-    //             <input  
-    //                 type="number"
-    //                 name="height"
-    //                 value={formData.height}
-    //                 onChange={handleChange}
-    //                 className="heightInput"
-    //             />
-    //               {mappedColorField}  
-    //             <div className="subFormBtnFlex">
-    //                 <button onClick={addInput} className="skuWrapperBtns">Add Color</button> 
-    //                 <button type="submit" onClick={handleSubmit} className="skuWrapperBtns">Submit</button>
-    //             </div>
-    //         </div>
-    //           {/* {clicked ? <Table formData={formData} colors={colors}/> : null} */}
-    //           <button onClick={handleSave}>Save</button>
-    //     </div>
-    // )
 }
 
 export default SkuForm

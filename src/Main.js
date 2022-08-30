@@ -26,17 +26,15 @@ const mappedSkuField = skuForm.map((item, index) => {
       </div>
   )
 })
-    return(
-      <SkuForm/>
-    )
-  // return (
-  //   <div className="main">
-  //     <h1>Container Unloading Planner</h1>
-  //     {mappedSkuField}
-  //     <button onClick={addInput}>Add New Sku</button> 
-  //     <button>Master Submit</button>
-  //   </div>
-  // );
+
+  return (
+    <div className="main">
+      <h1>Container Unloading Planner</h1>
+      {mappedSkuField}
+      <button onClick={addInput}>Add New Sku</button> 
+      <button>Master Submit</button>
+    </div>
+  );
 }
 
 export default Main;
