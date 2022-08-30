@@ -1,10 +1,7 @@
 import React, {useState,useEffect} from "react";
-import ColorInput from "./ColorInput";
 import Layout from "./Layout";
 
 function Main(){
-
-    
 
     //State variables
     const [formData, setFormData] = useState({
@@ -16,14 +13,19 @@ function Main(){
         {
             color: "",
             totalBoxes: 0
-    
         }
     ])
 
+    const [inputArray, setInputArray] = useState([{
+        formData: {},
+        colors: []
+    }])
+
     const [clicked, setClicked] = useState(false);
+    
     useEffect(()=>{},[])
 
-    //onCHange functions
+    //onChange functions
     const handleChange = (e) => {
         const {name, value} = e.target
         setFormData({
@@ -44,8 +46,23 @@ function Main(){
     const handleSubmit = (e) => {
         e.preventDefault();
         setClicked(!clicked);
+        setInputArray([...inputArray, formData, colors])
+        
+        // const reset = ()=>{
+        //     setFormData({
+        //         sku: "",
+        //         height: 0,
+        //     })
+        //     setColors(
+        //         {
+        //             color: "",
+        //             totalBoxes: 0
+        //         }
+        //     )
+        // }
         console.log("colors: ", colors)
         console.log("formData". formData)
+        console.log("input array", inputArray)
     }
 
     const addInput = (e) => {
@@ -88,6 +105,8 @@ function Main(){
     return(
         <div>
             <form onSubmit={handleSubmit}>
+                <fieldset>
+                <legend>Example</legend>
                 <label htmlFor="sku">Enter Sku</label>
                 <input 
                     type="text"
@@ -102,12 +121,11 @@ function Main(){
                     value={formData.height}
                     onChange={handleChange}
                 />
-            </form>
-            <form onSubmit={handleSubmit}>
-                {mappedColorField}  
+                  {mappedColorField}  
                 <button onClick={addInput}>Add Color</button> 
                 <button type="submit" onClick={handleSubmit}>Submit</button>
-            </form>  
+                </fieldset>
+            </form>
             {clicked ? <Layout formData={formData} colors={colors}/> : null}
         </div>
     )
