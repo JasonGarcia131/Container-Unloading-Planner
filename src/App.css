@@ -8,7 +8,7 @@ table{
 }
 
 .skuWrapper{
-  width: 40%;
+  width: 100%;
   border: 1px solid black;
   display: flex;
   flex-direction: row;
@@ -21,9 +21,8 @@ margin: 5px;
 
 
 .mainFormWrapper{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .mainFormFlex{
@@ -61,7 +60,7 @@ margin: 5px;
 }
 
 .tableWrapper{
-  width: 40%;
+  width: 100%;
   text-align: center;
   border: 1px solid black;
 }
