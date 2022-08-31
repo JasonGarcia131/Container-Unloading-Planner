@@ -62,6 +62,12 @@ function SkuForm(){
         setColors(data);
     }
 
+    const removeTable = (index) => {
+        let data = [...tableData];
+        data.splice(index,1);
+        setTableData(data);
+    }
+
     const handleSave = () => {
         setTableData([...tableData, {formData, colors}]);
             setFormData({
@@ -168,7 +174,7 @@ function SkuForm(){
                 </div>
             </div>
             <button onClick={handleSave}>Save</button>
-              {clicked ? <Table tableData={tableData} /> : null}
+              {clicked ? <Table tableData={tableData} removeTable={(i)=>removeTable(i)}/> : null}
         </div>
     )
 }

@@ -54,6 +54,7 @@ function Table(props){
             </thead>
             {arrayColors}
             </table>
+            <button onClick={()=>props.removeTable(i)}>Remove</button>
             </div>
         );
     })
