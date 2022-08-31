@@ -1,8 +1,8 @@
 import React, {useState,useEffect} from "react";
 import Table from "./Table";
-
 function SkuForm(){
 
+   
     //State variables
     const [formData, setFormData] = useState({
         sku: "",
@@ -43,6 +43,8 @@ function SkuForm(){
     const handleSubmit = (e) => {
         e.preventDefault();
         setClicked(!clicked);
+      
+
     }
 
     const addInput = (e) => {
@@ -62,6 +64,17 @@ function SkuForm(){
 
     const handleSave = () => {
         setTableData([...tableData, {formData, colors}]);
+            setFormData({
+                sku: "",
+                height: 0,
+            })
+            
+            setColors([
+                {
+                    color: "",
+                    totalBoxes: 0
+                }
+            ])
     }
 
     console.log("table data needed", tableData)
@@ -87,7 +100,7 @@ function SkuForm(){
                     className="subFormInput"
                 />
                 </div>
-                <button onClick={()=>removeInput(index)}>Remove</button>
+                <button onClick={(index)=>removeInput(index)}>Remove</button>
             </div>
         )
     })
@@ -154,8 +167,8 @@ function SkuForm(){
                     <button type="submit" onClick={handleSubmit} className="skuWrapperBtns">Submit</button>
                 </div>
             </div>
-              {clicked ? <Table tableData={tableData}/> : null}
-              <button onClick={handleSave}>Save</button>
+            <button onClick={handleSave}>Save</button>
+              {clicked ? <Table tableData={tableData} /> : null}
         </div>
     )
 }

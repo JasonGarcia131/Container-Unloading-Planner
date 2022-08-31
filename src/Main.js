@@ -7,25 +7,25 @@ function Main(){
   useEffect(()=>{},[])
   const [skuForm, setSkuForm] = useState([]);
 
-  const addInput = (e) => {
-    e.preventDefault()
-    setSkuForm([...skuForm, <SkuForm/>])
-}
+//   const addInput = (e) => {
+//     e.preventDefault()
+//     setSkuForm([...skuForm, <SkuForm/>])
+// }
 
-const removeInput = (index) => {
-    let data = [...skuForm];
-    data.splice(index,1);
-    setSkuForm(data);
-}
+// const removeInput = (index) => {
+//     let data = [...skuForm];
+//     data.splice(index,1);
+//     setSkuForm(data);
+// }
 
-const mappedSkuField = skuForm.map((item, index) => {
-  return  (
-      <div key={index} className="mainFormFlex">
-          {item}
-          <button className="mainFormRemoveBtn" onClick={()=>removeInput(index)}>Remove</button>
-      </div>
-  )
-})
+// const mappedSkuField = skuForm.map((item, index) => {
+//   return  (
+//       <div key={index} className="mainFormFlex">
+//           {item}
+//           <button className="mainFormRemoveBtn" onClick={()=>removeInput(index)}>Remove</button>
+//       </div>
+//   )
+// })
     return(
       <SkuForm/>
     )

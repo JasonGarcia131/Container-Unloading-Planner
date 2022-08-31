@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 
 function Table(props){
 
@@ -9,7 +9,9 @@ function Table(props){
         let column = 0;
         let maxHeight = 0;
         
-        if(item.formData.height <= 11){
+        if(item.formData.height <= 9){
+            maxHeight = 10
+        }else if(item.formData.height > 9 && item.formData.height <= 11){
             maxHeight = 9
         }else if(item.formData.height > 11 && item.formData.height <= 13){
             maxHeight = 7
@@ -17,7 +19,7 @@ function Table(props){
             maxHeight = 6
         }else if(item.formData.height > 16 && item.formData.height <= 19){
             maxHeight = 5
-        }else if(item.height > 20){
+        }else if(item.formData.height >= 20){
             maxHeight = 4
         }
         
@@ -39,8 +41,9 @@ function Table(props){
 
            ) 
         })
+       
         return (
-            <div key={i}>
+            <div key={i} className="tableWrapper">
             <h3>Style: {item.formData.sku.toUpperCase()}</h3>
             <table>
             <thead>
