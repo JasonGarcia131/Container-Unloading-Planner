@@ -1,6 +1,5 @@
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Table from "./components/Table";
 import Main from "./Main";
 import HomePage from "./pages/HomePage";
 
@@ -11,8 +10,7 @@ function App(){
            <Router>
             <Routes>
                 <Route exact path="/" element={<HomePage/>}/>
-                <Route path="/Main" element={<Main/>}/>
-                <Route path="/Table" element={<Table/>}/>
+                <Route exact path="/Main" element={<Main/>}/>
             </Routes>
            </Router>
         </div>

@@ -27,7 +27,9 @@ function Main(){
 //   )
 // })
     return(
-      <SkuForm/>
+      <div>
+        <SkuForm/>
+      </div>
     )
   // return (
   //   <div className="main">

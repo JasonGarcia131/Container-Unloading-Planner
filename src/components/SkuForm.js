@@ -42,9 +42,7 @@ function SkuForm(){
     //onSubmit functions
     const handleSubmit = (e) => {
         e.preventDefault();
-        setClicked(!clicked);
-      
-
+        
     }
 
     const addInput = (e) => {
@@ -69,6 +67,8 @@ function SkuForm(){
     }
 
     const handleSave = () => {
+
+        setClicked(true);
         setTableData([...tableData, {formData, colors}]);
             setFormData({
                 sku: "",
@@ -81,6 +81,8 @@ function SkuForm(){
                     totalBoxes: 0
                 }
             ])
+
+
     }
 
     console.log("table data needed", tableData)
@@ -89,24 +91,32 @@ function SkuForm(){
         return  (
             <div key={index}>
                 <div className="subFormWrapper">
-                <label htmlFor="colors">Enter color</label>
-                <input
-                    type="text"
-                    name="color"
-                    value={colors.color}
-                    onChange={e=>handleChangeColorForm(index,e)}
-                    className="subFormInput"
-                />
-                <label htmlFor="totalBoxes">Total Boxes</label>
-                <input 
-                    type="number"
-                    name="totalBoxes"
-                    value={colors.totalBoxes}
-                    onChange={e=>handleChangeColorForm(index,e)}
-                    className="subFormInput"
-                />
+                    <div className="inputWrapper">
+                        <label htmlFor="colors">Enter color</label>
+                        <input
+                            type="text"
+                            name="color"
+                            value={colors.color}
+                            onChange={e=>handleChangeColorForm(index,e)}
+                            className="subFormInput"
+                        />
+                    </div>
+                    <div className="inputWrapper">
+                        <label htmlFor="totalBoxes">Total Boxes</label>
+                        <input 
+                            type="number"
+                            name="totalBoxes"
+                            value={colors.totalBoxes}
+                            onChange={e=>handleChangeColorForm(index,e)}
+                            className="subFormInput"
+                        />
+                    </div>
+                    <div onClick={(index)=>removeInput(index)} className="removeX">
+                        <div className="x" id="x1"></div>
+                        <div className="x" id="x2"></div>
+                    </div>
                 </div>
-                <button onClick={(index)=>removeInput(index)}>Remove</button>
+                
             </div>
         )
     })
@@ -151,6 +161,7 @@ function SkuForm(){
     return(
         <div className="mainFormWrapper" >
             <div className="skuWrapper">
+                <div className="inputWrapper">
                 <label htmlFor="sku">Enter Sku</label>
                 <input 
                     type="text"
@@ -159,6 +170,8 @@ function SkuForm(){
                     onChange={handleChange}
                     className="skuInput"
                 />
+                </div>
+                <div className="inputWrapper">
                 <label htmlFor="height">Enter Box height</label>
                 <input  
                     type="number"
@@ -167,10 +180,13 @@ function SkuForm(){
                     onChange={handleChange}
                     className="heightInput"
                 />
+                </div>
+                
+               
                   {mappedColorField}  
                 <div className="subFormBtnFlex">
                     <button onClick={addInput} className="skuWrapperBtns">Add Color</button> 
-                    <button type="submit" onClick={handleSubmit} className="skuWrapperBtns">Submit</button>
+                    {/* <button type="submit" onClick={handleSubmit} className="skuWrapperBtns">Submit</button> */}
                 </div>
             </div>
             <button onClick={handleSave}>Save</button>
