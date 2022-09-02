@@ -1,5 +1,7 @@
 import React, {useState,useEffect} from "react";
 import Table from "./Table";
+import ReactHTMLTableToExcel from "react-html-table-to-excel"
+
 function SkuForm(){
 
     //State variables
@@ -20,7 +22,7 @@ function SkuForm(){
     const [clicked, setClicked] = useState(false);
 
     const [message, setMessage] = useState("");
-    
+
     useEffect(()=>{},[])
 
     //onChange functions
@@ -152,9 +154,11 @@ function SkuForm(){
                     <button onClick={addInput} className="skuWrapperBtns">Add Color</button> 
                 </div>
             </div>
-            <button className="createPlanBtn"onClick={handleSave}>Create Plan</button>
+            <button className="createPlanBtn" onClick={handleSave}>Create Plan</button>
                 <p className="errorMessage">{message}</p>
-            {clicked ? <Table tableData={tableData} removeTable={(i)=>removeTable(i)}/> : null}
+            {clicked ? <Table tableData={tableData} removeTable={(i)=>removeTable(i)}/>  : null}
+            {clicked ? <ReactHTMLTableToExcel table="unloading-floor-plan" fileName="floor-plan"/> : null}
+            
         </div>
     )
 }

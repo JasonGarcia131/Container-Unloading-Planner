@@ -1,9 +1,10 @@
 import React, {useEffect} from "react";
 
+
 function Table(props){
 
     useEffect(()=>{},[]);
-    
+
     const mappedColors = props.tableData.map((item,i) => {
         let column = 0;
         let maxHeight = 0;
@@ -63,10 +64,12 @@ function Table(props){
             </div>
         );
     })
+
+
     return(
-        <div className="tableWrapper">
+        <table className="tableWrapper" id="unloading-floor-plan">
             {mappedColors}
-        </div>
+        </table>
     )
 
 }
