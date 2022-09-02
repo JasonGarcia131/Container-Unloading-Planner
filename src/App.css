@@ -1,20 +1,62 @@
-table > thead > tr, th, td {
-  border: 1px solid black;
-  padding: 0;
-  margin: 0;
+body{
+  font-family: sans-serif;
+  background-color: rgb(141, 253, 253);
+  background-image: url('../public/background.png');
+}
+
+a{
+  color: orange;
+}
+
+button{
+  border: outset;
+  background-color: white;
+}
+
+input{
+  border: inset;
 }
 
 table{
   margin: 0 auto;
+  border-spacing: 0;
+  border-collapse: collapse ;
+  background-color: white;
+}
+
+table > thead > tr, th, td {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.title{
+width: 100%;
+background-color: white;
+color: black;
+
+}
+
+.createPlanBtn{
+  background-color: rgb(110, 202, 110);
 }
 
 .homepage{
 border: 1px solid black;
+color: white;
+border-radius: 10px;
+width: 30%;
+height: 200px;
+position: absolute;
+margin: 0 auto;
+top: 35%;
+left: 35%;
+text-align: center;
+background-color: black;
+opacity: .8;
 }
 
 .skuWrapper{
   width: 100%;
-  border: 1px solid red;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -25,21 +67,20 @@ border: 1px solid black;
 .inputWrapper{
   margin: 0;
   text-align: center;
-
 }
 
 .skuWrapperBtns{
 margin: 5px;
 }
 
-
 .mainFormWrapper{
   width: 50%;
   margin: 0 auto;
+  background-color: rgb(227, 227, 227);
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid green;
+  border: 2px solid black;
 }
 
 .mainFormRemoveBtn{
@@ -61,23 +102,42 @@ margin: 5px;
   flex-direction: row;
   justify-content: space-between;
   margin:10px;
-  /* margin-top: 10px;
-  padding: 5px; */
-  border: 2px dotted orange;
+  border: inset;
+  padding: 5px;
 }
 
 .subFormInput{
   width: 15%;
 }
 
+.errorMessage{
+color: red;
+font-weight: bold;
+}
+
+.helpPage{
+  background-color: black;
+  opacity: .8;
+  color: white;
+  text-align: center;
+  margin: 0;
+}
+
+.helpPage > div> a{
+  font-size: 1.5em;
+}
+
 .removeX{
   width:10%;
-  border: 3px solid black;
+  position: relative;
+  left: 0;
+  top: 5px;
+  cursor: pointer;
 }
 
 .x{
   width: 50%; 
-  height: 5px; 
+  height: 4px; 
   background-color: red;
   transform-origin: 40% 80%;
   
@@ -101,9 +161,8 @@ margin: 5px;
 .tableWrapper{
   width: 100%;
   text-align: center;
-  border: 1px solid purple;
+  border: 1px solid black;
 }
-
 
 .main{
 padding: 5px;

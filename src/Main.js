@@ -1,6 +1,7 @@
 import "./App.css"
 import SkuForm from "./components/SkuForm";
 import React, {useState, useEffect} from "react";
+import {Link} from "react-router-dom"
 
 function Main(){
 
@@ -28,6 +29,8 @@ function Main(){
 // })
     return(
       <div>
+        <Link to="/">back</Link>
+        {/* <h1 className="title">Container Unloading Plan</h1> */}
         <SkuForm/>
       </div>
     )

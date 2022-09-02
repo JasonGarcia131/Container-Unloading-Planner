@@ -1,8 +1,7 @@
-import React, {useState,useEffect} from "react";
+import React, {useState,useEffect, useRef} from "react";
 import Table from "./Table";
 function SkuForm(){
 
-   
     //State variables
     const [formData, setFormData] = useState({
         sku: "",
@@ -16,44 +15,43 @@ function SkuForm(){
         }
     ])
 
-    const [tableData, setTableData] = useState([])
+    const [tableData, setTableData] = useState([]);
 
     const [clicked, setClicked] = useState(false);
+
+    const [message, setMessage] = useState("");
     
     useEffect(()=>{},[])
 
     //onChange functions
+        // name and value keys are deconstructed to pass to the state variable
     const handleChange = (e) => {
         const {name, value} = e.target
         setFormData({
             ...formData,
             [name]: value
-        })
+        });
     }
 
+    //This function takes an array of inputs
+        //need to find a way to only use handleChange function.
     const handleChangeColorForm = (index,e)=> {
         let data = [...colors];
         data[index][e.target.name] = e.target.value;
         setColors(data);
-        console.log("colors on change", colors)
     }
 
-
-    //onSubmit functions
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
-    }
-
+    //This function creates the array of inputs
     const addInput = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         let newInput = {
             color: "",
             totalBoxes: 0
         }
-        setColors([...colors, newInput])
+        setColors([...colors, newInput]);
     }
 
+    //This function removes index that was clicked
     const removeInput = (index) => {
         let data = [...colors];
         data.splice(index,1);
@@ -67,27 +65,31 @@ function SkuForm(){
     }
 
     const handleSave = () => {
-
-        setClicked(true);
-        setTableData([...tableData, {formData, colors}]);
+        //Checks to see if any input field is not empty
+        if(formData.sku.length > 0 && formData.height > 0 && colors.length > 0){
+            setTableData([...tableData, {formData, colors}]);
+           //Resets the state variables
             setFormData({
                 sku: "",
                 height: 0,
             })
-            
             setColors([
                 {
                     color: "",
                     totalBoxes: 0
                 }
             ])
-
+            setClicked(true);
+            setMessage("");
+        }else{
+            setMessage("Missing fields!")
+            setTimeout(()=>{setMessage("")},3000)
+        }
 
     }
 
-    console.log("table data needed", tableData)
-
-    const mappedColorField = colors.map((item, index) => {
+    //This function creates new input fields
+    const mappedColorField = colors.map((index) => {
         return  (
             <div key={index}>
                 <div className="subFormWrapper">
@@ -96,6 +98,7 @@ function SkuForm(){
                         <input
                             type="text"
                             name="color"
+                            autoFocus
                             value={colors.color}
                             onChange={e=>handleChangeColorForm(index,e)}
                             className="subFormInput"
@@ -116,81 +119,41 @@ function SkuForm(){
                         <div className="x" id="x2"></div>
                     </div>
                 </div>
-                
             </div>
         )
     })
 
-    // const mappedSkuField = arrayOfSkuForm.map((item, index) => {
-    //     return(
-    //         <div className="mainFormWrapper" key={index} >
-    //         <div className="skuWrapper">
-    //             <label htmlFor="sku">Enter Sku</label>
-    //             <input 
-    //                 type="text"
-    //                 name="sku"
-    //                 value={formData.sku}
-    //                 onChange={handleChange}
-    //                 className="skuInput"
-    //             />
-    //             <label htmlFor="height">Enter Box height</label>
-    //             <input  
-    //                 type="number"
-    //                 name="height"
-    //                 value={formData.height}
-    //                 onChange={handleChange}
-    //                 className="heightInput"
-    //             />
-    //               {mappedColorField}  
-    //             <div className="subFormBtnFlex">
-    //                 <button onClick={addInput} className="skuWrapperBtns">Add Color</button> 
-    //             </div>
-    //         </div>
-    //           {/* {clicked ? <Table formData={formData} colors={colors}/> : null} */}
-    //     </div>
-    //     )
-    // })
-
-    // return(
-    //     <div>
-    //         {mappedSkuField}
-    //         <button onClick={addSkuForm}>Add New Sku</button> 
-    //         <button onClick={handleSave}>Save</button>
-    //     </div>
-    // )
     return(
         <div className="mainFormWrapper" >
             <div className="skuWrapper">
                 <div className="inputWrapper">
-                <label htmlFor="sku">Enter Sku</label>
-                <input 
-                    type="text"
-                    name="sku"
-                    value={formData.sku}
-                    onChange={handleChange}
-                    className="skuInput"
-                />
+                    <label htmlFor="sku">Enter Sku</label>
+                    <input 
+                        type="text"
+                        name="sku"
+                        value={formData.sku}
+                        onChange={handleChange}
+                        className="skuInput"
+                    />
                 </div>
                 <div className="inputWrapper">
-                <label htmlFor="height">Enter Box height</label>
-                <input  
-                    type="number"
-                    name="height"
-                    value={formData.height}
-                    onChange={handleChange}
-                    className="heightInput"
-                />
+                    <label htmlFor="height">Enter Box Height</label>
+                    <input  
+                        type="number"
+                        name="height"
+                        value={formData.height}
+                        onChange={handleChange}
+                        className="heightInput"
+                    />
                 </div>
-                
-               
-                  {mappedColorField}  
+                {mappedColorField}  
                 <div className="subFormBtnFlex">
                     <button onClick={addInput} className="skuWrapperBtns">Add Color</button> 
-                    {/* <button type="submit" onClick={handleSubmit} className="skuWrapperBtns">Submit</button> */}
                 </div>
             </div>
-            <button onClick={handleSave}>Save</button>
-              {clicked ? <Table tableData={tableData} removeTable={(i)=>removeTable(i)}/> : null}
+            <button className="createPlanBtn"onClick={handleSave}>Create Plan</button>
+            <p className="errorMessage">{message}</p>
+            {clicked ? <Table tableData={tableData} removeTable={(i)=>removeTable(i)}/> : null}
         </div>
     )
 }
