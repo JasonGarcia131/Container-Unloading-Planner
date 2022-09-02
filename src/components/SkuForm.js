@@ -88,8 +88,7 @@ function SkuForm(){
 
     }
 
-    //This function creates new input fields
-    const mappedColorField = colors.map((index) => {
+    const mappedColorField = colors.map((item, index) => {
         return  (
             <div key={index}>
                 <div className="subFormWrapper">
@@ -123,36 +122,75 @@ function SkuForm(){
         )
     })
 
+    // const mappedSkuField = arrayOfSkuForm.map((item, index) => {
+    //     return(
+    //         <div className="mainFormWrapper" key={index} >
+    //         <div className="skuWrapper">
+    //             <label htmlFor="sku">Enter Sku</label>
+    //             <input 
+    //                 type="text"
+    //                 name="sku"
+    //                 value={formData.sku}
+    //                 onChange={handleChange}
+    //                 className="skuInput"
+    //             />
+    //             <label htmlFor="height">Enter Box height</label>
+    //             <input  
+    //                 type="number"
+    //                 name="height"
+    //                 value={formData.height}
+    //                 onChange={handleChange}
+    //                 className="heightInput"
+    //             />
+    //               {mappedColorField}  
+    //             <div className="subFormBtnFlex">
+    //                 <button onClick={addInput} className="skuWrapperBtns">Add Color</button> 
+    //             </div>
+    //         </div>
+    //           {/* {clicked ? <Table formData={formData} colors={colors}/> : null} */}
+    //     </div>
+    //     )
+    // })
+
+    // return(
+    //     <div>
+    //         {mappedSkuField}
+    //         <button onClick={addSkuForm}>Add New Sku</button> 
+    //         <button onClick={handleSave}>Save</button>
+    //     </div>
+    // )
     return(
         <div className="mainFormWrapper" >
             <div className="skuWrapper">
                 <div className="inputWrapper">
-                    <label htmlFor="sku">Enter Sku</label>
-                    <input 
-                        type="text"
-                        name="sku"
-                        value={formData.sku}
-                        onChange={handleChange}
-                        className="skuInput"
-                    />
+                <label htmlFor="sku">Enter Sku</label>
+                <input 
+                    type="text"
+                    name="sku"
+                    value={formData.sku}
+                    onChange={handleChange}
+                    className="skuInput"
+                />
                 </div>
                 <div className="inputWrapper">
-                    <label htmlFor="height">Enter Box Height</label>
-                    <input  
-                        type="number"
-                        name="height"
-                        value={formData.height}
-                        onChange={handleChange}
-                        className="heightInput"
-                    />
+                <label htmlFor="height">Enter Box Height</label>
+                <input  
+                    type="number"
+                    name="height"
+                    value={formData.height}
+                    onChange={handleChange}
+                    className="heightInput"
+                />
                 </div>
-                {mappedColorField}  
+                
+               
+                  {mappedColorField}  
                 <div className="subFormBtnFlex">
                     <button onClick={addInput} className="skuWrapperBtns">Add Color</button> 
                 </div>
             </div>
             <button className="createPlanBtn"onClick={handleSave}>Create Plan</button>
-            <p className="errorMessage">{message}</p>
+                <p className="errorMessage">{message}</p>
             {clicked ? <Table tableData={tableData} removeTable={(i)=>removeTable(i)}/> : null}
         </div>
     )

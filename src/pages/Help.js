@@ -2,9 +2,9 @@ import {Link} from "react-router-dom"
 
 function Help(){
     return(
-        <div>
-            <Link to="/">back</Link>
-            <div className="helpPage">
+        <div className="helpPage">
+            <Link to="/" className="backLink">back</Link>
+            <div >
                 <h1>Instructions</h1>
                 <div>
                     <p>Enter a sku number in the input box shown below:</p>

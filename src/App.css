@@ -2,6 +2,9 @@ body{
   font-family: sans-serif;
   background-color: rgb(141, 253, 253);
   background-image: url('../public/background.png');
+  padding: 0;
+  margin: 0%;
+  box-sizing: border-box;
 }
 
 a{
@@ -30,10 +33,16 @@ table > thead > tr, th, td {
 }
 
 .title{
-width: 100%;
-background-color: white;
-color: black;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  margin: 0%;
+}
 
+.formMargin{
+  margin: 15px;
 }
 
 .createPlanBtn{
@@ -116,6 +125,9 @@ font-weight: bold;
 }
 
 .helpPage{
+  position: absolute;
+  top: 0;
+  width: 100%;
   background-color: black;
   opacity: .8;
   color: white;
@@ -127,12 +139,22 @@ font-weight: bold;
   font-size: 1.5em;
 }
 
+.helpPage > div> div > img{
+  width: 100%;
+}
+
 .removeX{
   width:10%;
   position: relative;
   left: 0;
   top: 5px;
   cursor: pointer;
+}
+
+.backLink{
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .x{
@@ -167,4 +189,34 @@ font-weight: bold;
 .main{
 padding: 5px;
 text-align: center;
+}
+
+@media only screen and (max-width: 1160px) {
+  .mainFormWrapper{
+    width: 60%;
+  }
+  .skuWrapper{
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 971px) {
+  .mainFormWrapper{
+    width: 70%;
+  }
+
+  .subFormWrapper{
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 946px) {
+  .mainFormWrapper{
+   display: flex;
+   flex-direction: column;
+  }
+
+  .subFormWrapper{
+    width: 60%;
+  }
 }
