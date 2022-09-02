@@ -214,9 +214,20 @@ text-align: center;
   .mainFormWrapper{
    display: flex;
    flex-direction: column;
+   width: 100%;
   }
 
   .subFormWrapper{
-    width: 60%;
+    width: 70%;
   }
+
+  .formMargin{
+    margin-top: 50px;
+  }
+
+  .removeX{
+    width: 25%;
+  }
+
+
 }

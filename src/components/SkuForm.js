@@ -1,4 +1,4 @@
-import React, {useState,useEffect, useRef} from "react";
+import React, {useState,useEffect} from "react";
 import Table from "./Table";
 function SkuForm(){
 
@@ -122,43 +122,6 @@ function SkuForm(){
         )
     })
 
-    // const mappedSkuField = arrayOfSkuForm.map((item, index) => {
-    //     return(
-    //         <div className="mainFormWrapper" key={index} >
-    //         <div className="skuWrapper">
-    //             <label htmlFor="sku">Enter Sku</label>
-    //             <input 
-    //                 type="text"
-    //                 name="sku"
-    //                 value={formData.sku}
-    //                 onChange={handleChange}
-    //                 className="skuInput"
-    //             />
-    //             <label htmlFor="height">Enter Box height</label>
-    //             <input  
-    //                 type="number"
-    //                 name="height"
-    //                 value={formData.height}
-    //                 onChange={handleChange}
-    //                 className="heightInput"
-    //             />
-    //               {mappedColorField}  
-    //             <div className="subFormBtnFlex">
-    //                 <button onClick={addInput} className="skuWrapperBtns">Add Color</button> 
-    //             </div>
-    //         </div>
-    //           {/* {clicked ? <Table formData={formData} colors={colors}/> : null} */}
-    //     </div>
-    //     )
-    // })
-
-    // return(
-    //     <div>
-    //         {mappedSkuField}
-    //         <button onClick={addSkuForm}>Add New Sku</button> 
-    //         <button onClick={handleSave}>Save</button>
-    //     </div>
-    // )
     return(
         <div className="mainFormWrapper" >
             <div className="skuWrapper">

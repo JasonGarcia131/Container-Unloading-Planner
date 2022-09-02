@@ -8,7 +8,6 @@ function Main(){
   useEffect(()=>{},[])
     return(
       <div>
-        <h1 className="title">Container Unloading Plan</h1>
         <Link to="/" className="backLink">back</Link>
         <div className="formMargin">
           <SkuForm/>

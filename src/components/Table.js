@@ -22,21 +22,23 @@ function Table(props){
             maxHeight = 4
         }
         //loops through the array and returns data in a table
-        const arrayColors = item.colors.map(b=>{
+        const arrayColors = item.colors.map((b,i)=>{
         column = Math.ceil(b.totalBoxes/maxHeight);
            return(
-            <tr>
-                <td>
-                    {b.color.toUpperCase()}
-                </td>
-                <td>
-                    {maxHeight}
-                </td>
-                  <td>{column}</td>
-                <td>
-                    {b.totalBoxes}
-                </td>
-            </tr>
+            <tbody key={i}>
+                <tr>
+                    <td>
+                        {b.color.toUpperCase()}
+                    </td>
+                    <td>
+                        {maxHeight}
+                    </td>
+                    <td>{column}</td>
+                    <td>
+                        {b.totalBoxes}
+                    </td>
+                </tr>
+            </tbody>
            ) 
         })
        
@@ -45,10 +47,12 @@ function Table(props){
                 <h3>Style: {item.formData.sku.toUpperCase()}</h3>
                 <table>
                     <thead>
-                        <th>Color</th>
-                        <th>Boxes Per Column</th>
-                        <th>Number of Columns</th>
-                        <th>Total Boxes</th>
+                        <tr>
+                            <th>Color</th>
+                            <th>Boxes Per Column</th>
+                            <th>Number of Columns</th>
+                            <th>Total Boxes</th>
+                        </tr>
                     </thead>
                     {arrayColors}
                 </table>
