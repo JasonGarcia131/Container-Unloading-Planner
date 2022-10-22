@@ -3,7 +3,7 @@
   and columns. At the current company I work for, warehouse space was always an issue. Unloading containers required reviewing a packinglist that listed the incoming     box dimensions and SKU'S. Pre-planning how the boxes will be stacked and how much space was going to be occupied was tedious. This app does all the calculations and   can be downloaded into and excel spreadsheet.
   
  # How To Use
-  Instructions on how to use the application can be found through a link in the homepage of the app.
+  Instructions on how to use the application can be found through a link "Need Help?" in the homepage of the app.
   
   #Tech Stack
     create-react-app was used for the frontend.
